@@ -21,17 +21,17 @@ program example
     
     ! elapsed and interval should be the same here
     elapsedseconds = stopwatch%elapsed()
-    intervalseconds = stopwatch%elapsed()
+    intervalseconds = stopwatch%interval()
     
     ! do some more work here
 
     ! elapsed and interval should not be the same here
     elapsedseconds = stopwatch%elapsed()
-    intervalseconds = stopwatch%elapsed()
+    intervalseconds = stopwatch%interval()
     
     ! end timer
     call stopwatch%finish()
     
-end example
+end program example
 ```
 You can use the macro DO_CHECKS to enable checking if timer has started for safety, by default checks are not enabled. It is not clear what performance hit this will cost.
