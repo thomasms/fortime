@@ -1,3 +1,14 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!                                               !!
+!!                  FORTIME                      !!
+!!                                               !!
+!!      Copyright (c) 2018, Thomas Stainer       !!
+!!                                               !!
+!!            All rights reserved.               !!
+!!    Licensed under the 3-clause BSD license.   !!
+!!                                               !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 module fortime_m
     use kinds_m
     implicit none
@@ -71,9 +82,11 @@ contains
     end subroutine reset
 
     !> Get the elapsed time now
-    function elapsed(this) result(time)
+    subroutine elapsed(this,time)
         class(Timer), intent(inout) :: this
-        real(kind=sp) :: time, endtime
+        real(kind=sp), intent(out) :: time
+
+        real(kind=sp) :: endtime
 
 #ifdef DO_CHECKS
         call this%checkstarted()
@@ -81,21 +94,21 @@ contains
         call cpu_time(endtime)
         time = endtime - this%starttime
         this%lastelapsed = this%currentelapsed
-        this%currentelapsed = time
+        this%currentelapsed = endtime
 
-    end function elapsed
+    end subroutine elapsed
 
     !> Get the interval time between last elapsed time and now
-    function interval(this) result(time)
-        class(Timer), intent(in) :: this
-        real(kind=sp) :: time, endtime
+    subroutine interval(this, time)
+        class(Timer), intent(in)   :: this
+        real(kind=sp), intent(out) :: time
 
 #ifdef DO_CHECKS
         call this%checkstarted()
 #endif
         time = this%currentelapsed - this%lastelapsed
 
-    end function interval
+    end subroutine interval
 
     !! Checks if timer start is called
     !! Stops otherwise

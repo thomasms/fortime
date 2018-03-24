@@ -1,3 +1,14 @@
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+!!                                               !!
+!!                  FORTIME                      !!
+!!                                               !!
+!!      Copyright (c) 2018, Thomas Stainer       !!
+!!                                               !!
+!!            All rights reserved.               !!
+!!    Licensed under the 3-clause BSD license.   !!
+!!                                               !!
+!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 module kinds_m
     implicit none
     private
