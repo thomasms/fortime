@@ -9,14 +9,11 @@ set(PROJECT_URL "https://git.ccfe.ac.uk/thomasms/fortime")
 
 # set source directories
 set (SOURCE_DIR_BASE ${CMAKE_CURRENT_LIST_DIR}/source)
-set (FORTIME_EXAMPLE_DIR ${CMAKE_CURRENT_LIST_DIR}/example)
+set (FORTIME_EXAMPLE_DIR ${CMAKE_CURRENT_LIST_DIR}/examples)
 set (FORTIME_BUILD_DIR ${CMAKE_BINARY_DIR})
 
 # library names
 set (FORTIME_LIB_NAME fortime)
-
-# example name
-set (FORTIME_EXAMPLE_NAME fortimeexample)
 
 # Set release build by default
 set (CMAKE_BUILD_TYPE Release CACHE STRING "Select which configuration to build.")

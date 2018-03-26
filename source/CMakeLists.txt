@@ -2,8 +2,9 @@ project (${FORTIME_LIB_NAME})
 enable_language (Fortran)
 
 set (FORTIME_SOURCES
-    ${SOURCE_DIR_BASE}/kinds_m.f90
-    ${SOURCE_DIR_BASE}/fortime_m.f90)
+    ${SOURCE_DIR_BASE}/kinds_m.F90
+    ${SOURCE_DIR_BASE}/fortime_m.F90
+    ${SOURCE_DIR_BASE}/timefunctor_m.F90)
 
 # set the flags
 set_source_files_properties(${FORTIME_SOURCES} PROPERTIES COMPILE_FLAGS "${F90_FLAGS}")
