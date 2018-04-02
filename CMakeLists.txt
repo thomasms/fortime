@@ -10,6 +10,7 @@ set(PROJECT_URL "https://git.ccfe.ac.uk/thomasms/fortime")
 # set source directories
 set (SOURCE_DIR_BASE ${CMAKE_CURRENT_LIST_DIR}/source)
 set (FORTIME_EXAMPLE_DIR ${CMAKE_CURRENT_LIST_DIR}/examples)
+set (FORTIME_EXTERNAL_DIR ${CMAKE_CURRENT_LIST_DIR}/external)
 set (FORTIME_BUILD_DIR ${CMAKE_BINARY_DIR})
 
 # library names

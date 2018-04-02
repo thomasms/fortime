@@ -2,7 +2,7 @@ project (${FORTIME_LIB_NAME})
 enable_language (Fortran)
 
 set (FORTIME_SOURCES
-    ${SOURCE_DIR_BASE}/kinds_m.F90
+    ${FORTIME_EXTERNAL_DIR}/fork/fork_m.F90
     ${SOURCE_DIR_BASE}/fortime_m.F90
     ${SOURCE_DIR_BASE}/timefunctor_m.F90)
 

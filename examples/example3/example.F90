@@ -11,7 +11,7 @@
 
 !! Example using functor
 module examplethree_m
-    use kinds_m
+    use fork_m
     use timefunctor_m
 
     type, extends(Functor), public :: TestFunctor
@@ -40,7 +40,7 @@ end module examplethree_m
 
 !! Program
 program example
-    use kinds_m
+    use fork_m
     use examplethree_m
     implicit none
 

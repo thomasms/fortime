@@ -15,7 +15,7 @@
 #endif
 
 program fortimexample
-    use kinds_m
+    use fork_m
     use fortime_m
     implicit none
 

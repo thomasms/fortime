@@ -10,7 +10,7 @@
 !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 module timefunctor_m
-    use kinds_m
+    use fork_m
     use fortime_m
     implicit none
     private

@@ -11,7 +11,7 @@
 
 program example
     use fortime_m
-    use kinds_m
+    use fork_m
     implicit none
 
     type(Timer) :: stopwatch
