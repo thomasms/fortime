@@ -14,7 +14,7 @@ module examplethree_m
     use fork_m
     use timefunctor_m
 
-    type, extends(Functor), public :: TestFunctor
+    type, extends(TimeFunctor), public :: TestFunctor
         real(kind=dp) :: a
         real(kind=dp) :: b
         real(kind=dp) :: c

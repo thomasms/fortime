@@ -18,16 +18,16 @@ module timefunctor_m
     public :: timeit
 
     !> Extend this to benchmark functor
-    type, public, abstract :: Functor
+    type, public, abstract :: TimeFunctor
     contains
         procedure(functor_timeit), deferred :: run
-    end type Functor
+    end type TimeFunctor
 
     abstract interface
         subroutine functor_timeit(this)
-            import :: Functor
+            import :: TimeFunctor
             implicit none
-            class(Functor), intent(inout) :: this
+            class(TimeFunctor), intent(inout) :: this
         end subroutine functor_timeit
     end interface
 
@@ -35,7 +35,7 @@ contains
 
     !> Get the CPU time taken for functor
     function timeit(func) result(time)
-        class(Functor), intent(inout) :: func
+        class(TimeFunctor), intent(inout) :: func
         real(kind=sp) :: time
 
         type(Timer) :: stopwatch
