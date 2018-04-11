@@ -17,13 +17,13 @@ module fortime_m
     !> A stopwatch
     type, public :: Timer
     private
-        logical       :: isstarted      = .false.
+        logical        :: isstarted      = .false.
         real(kind=kr4) :: starttime      = 0.0_kr4
         real(kind=kr4) :: lastelapsed    = 0.0_kr4
         real(kind=kr4) :: currentelapsed = 0.0_kr4
     contains
         procedure :: start
-        procedure :: finish
+        procedure :: stop
         procedure :: reset
         procedure :: elapsed
         procedure :: interval
@@ -53,7 +53,7 @@ contains
     !> End the timer
     !! Should only be called after start is called
     !! Stops otherwise
-    subroutine finish(this)
+    subroutine stop(this)
         class(Timer), intent(inout) :: this
 
 #ifdef DO_CHECKS
@@ -63,7 +63,7 @@ contains
         this%currentelapsed = this%lastelapsed
         this%isstarted = .false.
 
-    end subroutine finish
+    end subroutine stop
 
     !> Reset the timer
     !! Does not stop or restart the timer

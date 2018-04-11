@@ -19,6 +19,7 @@ module timefunctor_m
 
     !> Extend this to benchmark functor
     type, public, abstract :: TimeFunctor
+        integer(kind=ki2) :: repeats = 3_ki2   ! Best of three by default
     contains
         procedure(functor_timeit), deferred :: run
     end type TimeFunctor
@@ -34,17 +35,24 @@ module timefunctor_m
 contains
 
     !> Get the CPU time taken for functor
-    function timeit(func) result(time)
+    function timeit(func) result(average_time)
         class(TimeFunctor), intent(inout) :: func
-        real(kind=kr4) :: time
+
+        real(kind=kr4)    :: time, average_time
+        integer(kind=ki2) :: r
 
         type(Timer) :: stopwatch
 
-        call stopwatch%start()
-        call func%run()
-        call stopwatch%elapsed(time)
-        call stopwatch%finish()
+        average_time = 0.0_kr4
+        do r=1,func%repeats
+            call stopwatch%start()
+            call func%run()
+            call stopwatch%elapsed(time)
+            average_time = average_time + time
+            call stopwatch%stop()
+        enddo
 
+        average_time = average_time/func%repeats
     end function timeit
 
 end module timefunctor_m
