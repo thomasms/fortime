@@ -36,7 +36,7 @@ contains
     !> Get the CPU time taken for functor
     function timeit(func) result(time)
         class(TimeFunctor), intent(inout) :: func
-        real(kind=sp) :: time
+        real(kind=kr4) :: time
 
         type(Timer) :: stopwatch
 
