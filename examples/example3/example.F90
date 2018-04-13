@@ -15,9 +15,9 @@ module examplethree_m
     use timefunctor_m
 
     type, extends(TimeFunctor), public :: TestFunctor
-        real(kind=dp) :: a
-        real(kind=dp) :: b
-        real(kind=dp) :: c
+        real(kind=kr4) :: a
+        real(kind=kr4) :: b
+        real(kind=kr4) :: c
     contains
         procedure :: run
     end type TestFunctor
@@ -26,14 +26,10 @@ contains
     subroutine run(this)
         class(TestFunctor), intent(inout) :: this
 
-        integer(dp), parameter :: iterations = 1000000_sp
-        integer(sp) :: i
+        this%a = 2.5e-5_kr4
+        this%b = 1.5e-5_kr4
+        this%c = (this%a + this%b)**(2.1_ki4)/(this%a**4.5_ki4)
 
-        do i=1, iterations
-            this%a = 2.5e-5
-            this%b = 1.5e-5
-            this%c = (this%a + this%b)**(i-2)/(this%a**i)
-        enddo
     end subroutine run
 
 end module examplethree_m
@@ -45,9 +41,10 @@ program example
     implicit none
 
     type(TestFunctor) :: fctr
-    real(kind=sp) :: elapsedseconds
+    real(kind=kr4) :: elapsedseconds
 
-    elapsedseconds = timeit(fctr)
-    print *, elapsedseconds
+    fctr%iterations = 1000000_ki4
+    call timeit(fctr)
+    call fctr%printsummary()
 
 end program example
