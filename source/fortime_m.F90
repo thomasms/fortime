@@ -17,13 +17,13 @@ module fortime_m
     !> A stopwatch
     type, public :: Timer
     private
-        logical       :: isstarted      = .false.
-        real(kind=sp) :: starttime      = 0.0_sp
-        real(kind=sp) :: lastelapsed    = 0.0_sp
-        real(kind=sp) :: currentelapsed = 0.0_sp
+        logical        :: isstarted      = .false.
+        real(kind=kr4) :: starttime      = 0.0_kr4
+        real(kind=kr4) :: lastelapsed    = 0.0_kr4
+        real(kind=kr4) :: currentelapsed = 0.0_kr4
     contains
         procedure :: start
-        procedure :: finish
+        procedure :: stop
         procedure :: reset
         procedure :: elapsed
         procedure :: interval
@@ -53,7 +53,7 @@ contains
     !> End the timer
     !! Should only be called after start is called
     !! Stops otherwise
-    subroutine finish(this)
+    subroutine stop(this)
         class(Timer), intent(inout) :: this
 
 #ifdef DO_CHECKS
@@ -63,7 +63,7 @@ contains
         this%currentelapsed = this%lastelapsed
         this%isstarted = .false.
 
-    end subroutine finish
+    end subroutine stop
 
     !> Reset the timer
     !! Does not stop or restart the timer
@@ -84,9 +84,9 @@ contains
     !> Get the elapsed time now
     subroutine elapsed(this,time)
         class(Timer), intent(inout) :: this
-        real(kind=sp), intent(out) :: time
+        real(kind=kr4), intent(out) :: time
 
-        real(kind=sp) :: endtime
+        real(kind=kr4) :: endtime
 
 #ifdef DO_CHECKS
         call this%checkstarted()
@@ -101,7 +101,7 @@ contains
     !> Get the interval time between last elapsed time and now
     subroutine interval(this, time)
         class(Timer), intent(in)   :: this
-        real(kind=sp), intent(out) :: time
+        real(kind=kr4), intent(out) :: time
 
 #ifdef DO_CHECKS
         call this%checkstarted()

@@ -16,10 +16,10 @@ program example
 
     type(Timer) :: stopwatch
 
-    integer(kind=dp), parameter :: iterations = 1000000_dp
-    integer(kind=dp) :: i
-    real(kind=sp)    :: elapsedseconds(iterations)
-    real(kind=sp)    :: intervalseconds(iterations)
+    integer(kind=ki4), parameter :: iterations = 1000000_ki4
+    integer(kind=ki4) :: i
+    real(kind=kr4)    :: elapsedseconds(iterations)
+    real(kind=kr4)    :: intervalseconds(iterations)
 
     ! start it
     call stopwatch%start()
@@ -32,6 +32,6 @@ program example
     print *,elapsedseconds(iterations)
 
     ! end timer
-    call stopwatch%finish()
+    call stopwatch%stop()
 
 end program example
