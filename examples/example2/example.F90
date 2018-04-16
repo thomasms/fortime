@@ -44,7 +44,8 @@ contains
         averagetime = 0.0_kr4
         do k=1_ki4, iterations
             averagetime = averagetime + matrixcreate(sze)
-        enddo
+        end do
+        
         averagetime = averagetime/iterations
         print *, "Average time taken for matrix of size:", sze, "is:", averagetime, "secs"
     end subroutine run
@@ -57,10 +58,11 @@ contains
         real(kind=kr4), dimension(:,:), allocatable :: mat
         integer(kind=ki4) :: stat
 
-        allocate(mat(sze,sze),stat=stat)
+        allocate(mat(sze,sze), stat=stat)
         if(stat /= 0)then
             stop "Cannot allocate memory"
-        endif
+        end if
+
         call dowork(mat,sze)
         deallocate(mat)
 
@@ -77,8 +79,9 @@ contains
         integer(kind=ki4) :: i, j
 
         !> do silly work
-        do i=1_ki4, sze
-            do j=1_ki4, sze
+        !! Fortran is column major
+        do j = 1_ki4, sze
+            do i = 1_ki4, sze
                 matrix(i,j) = i*j/3.14
             enddo
         enddo

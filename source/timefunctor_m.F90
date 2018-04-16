@@ -22,7 +22,7 @@ module timefunctor_m
     !> Extend this to benchmark functor
     type, public, abstract :: TimeFunctor
     private
-        real(kind=kr4)            :: time = 0.0_kr4     !< Time Taken (secs)
+        real(kind=sp)             :: time = 0.0_sp     !< Time Taken (secs)
                                                         !! we don't want people to set this
         integer(kind=ki2), public :: repeats = 3_ki2    !< Best of three by default
         integer(kind=ki4), public :: iterations = 1_ki4 !< By default we do one iteration
@@ -45,7 +45,7 @@ contains
     !> get the time taken for the last run
     subroutine gettime(this, time)
         class(TimeFunctor), intent(in) :: this
-        real(kind=kr4), intent(out)    :: time
+        real(kind=sp), intent(out)    :: time
 
         time = this%time
     end subroutine gettime
@@ -64,13 +64,13 @@ contains
     subroutine timeit(func)
         class(TimeFunctor), intent(inout) :: func
 
-        real(kind=kr4)    :: time, average_time
+        real(kind=sp)     :: time, average_time
         integer(kind=ki2) :: r
         integer(kind=ki4) :: i
 
         type(Timer) :: stopwatch
 
-        average_time = 0.0_kr4
+        average_time = 0.0_sp
         do r=1,func%repeats
             call stopwatch%start()
             do i=1, func%iterations

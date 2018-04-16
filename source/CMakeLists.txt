@@ -6,6 +6,9 @@ set (FORTIME_SOURCES
     ${SOURCE_DIR_BASE}/fortime_m.F90
     ${SOURCE_DIR_BASE}/timefunctor_m.F90)
 
+# enable SP, DP and QP notation
+add_definitions(-DFORK_USE_PREC_KIND=1)
+
 # set the flags
 set_source_files_properties(${FORTIME_SOURCES} PROPERTIES COMPILE_FLAGS "${F90_FLAGS}")
 

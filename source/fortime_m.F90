@@ -18,9 +18,9 @@ module fortime_m
     type, public :: Timer
     private
         logical        :: isstarted      = .false.
-        real(kind=kr4) :: starttime      = 0.0_kr4
-        real(kind=kr4) :: lastelapsed    = 0.0_kr4
-        real(kind=kr4) :: currentelapsed = 0.0_kr4
+        real(kind=sp) :: starttime      = 0.0_sp
+        real(kind=sp) :: lastelapsed    = 0.0_sp
+        real(kind=sp) :: currentelapsed = 0.0_sp
     contains
         procedure :: start
         procedure :: stop
@@ -84,9 +84,9 @@ contains
     !> Get the elapsed time now
     subroutine elapsed(this,time)
         class(Timer), intent(inout) :: this
-        real(kind=kr4), intent(out) :: time
+        real(kind=sp), intent(out) :: time
 
-        real(kind=kr4) :: endtime
+        real(kind=sp) :: endtime
 
 #ifdef DO_CHECKS
         call this%checkstarted()
@@ -101,7 +101,7 @@ contains
     !> Get the interval time between last elapsed time and now
     subroutine interval(this, time)
         class(Timer), intent(in)   :: this
-        real(kind=kr4), intent(out) :: time
+        real(kind=sp), intent(out) :: time
 
 #ifdef DO_CHECKS
         call this%checkstarted()

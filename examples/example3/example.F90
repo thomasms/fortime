@@ -43,7 +43,7 @@ program example
     type(TestFunctor) :: fctr
     real(kind=kr4) :: elapsedseconds
 
-    fctr%iterations = 1000000_ki4
+    fctr%iterations = 10000000_ki4
     call timeit(fctr)
     call fctr%printsummary()
 
